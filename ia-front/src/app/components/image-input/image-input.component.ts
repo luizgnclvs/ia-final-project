@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RNNResponse } from 'src/app/models/rnn-response';
 import { ImageStoreService } from 'src/app/stores/image.store.service';
 
 @Component({
@@ -10,6 +12,7 @@ export class ImageInputComponent {
 	displayName: string = '';
 	displayCondition: boolean = false;
 	file: File | undefined;
+	response: RNNResponse | undefined;
 
 	constructor(private imageStore: ImageStoreService) {}
 

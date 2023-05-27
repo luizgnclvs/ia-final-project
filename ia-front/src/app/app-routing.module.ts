@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuTemplateComponent } from './pages/menu-template/menu-template.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ImageInputComponent } from './components/image-input/image-input.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 const routes: Routes = [
 	{
@@ -11,11 +12,15 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'home',
-				component: ImageInputComponent
+				component: HomeComponent
 			},
 			{
-				path: 'about',
+				path: 'sobre',
 				component: AboutComponent,
+			},
+			{
+				path: 'cadastro',
+				component: RegistrationComponent,
 			},
 			{
 				path: '',
