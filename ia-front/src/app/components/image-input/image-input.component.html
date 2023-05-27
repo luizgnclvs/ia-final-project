@@ -3,13 +3,16 @@
 		<p>Adicione uma foto da sua roupa!</p>
 	</mat-card-title>
 	<mat-card-content>
+		<div *ngIf="file" class="image-preview">
+			<img [src]="(imageSRC$)" />
+		</div>
 		<mat-form-field>
 			<mat-label>Adicione uma imagem</mat-label>
-			<button mat-icon-button matPrefix (click)="fileInput.click()">
-				<mat-icon fontIcon="attach_file" />
+			<button mat-icon-button matPrefix #fileButton (click)="fileInput.click()">
+				<mat-icon fontIcon="folder" />
 			</button>
-			<input type="text" readonly matInput [value]="displayName" />
-			<input type="file" accept=".jpg, .jpeg, .png" hidden #fileInput (change)="handleFileInputChange($event)" />
+			<input type="text" readonly matInput [value]="displayName" (focus)="fileButton.focus()"/>
+			<input type="file" accept="image/*" hidden #fileInput (change)="handleFileInputChange($event)" />
 		</mat-form-field>
 	</mat-card-content>
 	<mat-card-actions>

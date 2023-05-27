@@ -1,7 +1,25 @@
 mat-card {
 	width: 40%;
 	padding: 30px;
-	margin: 100px auto;
+	margin: 45px auto;
 	display: grid;
 	place-items: center;
+}
+
+mat-card-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.image-preview {
+	max-width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+img {
+	width: 90%;
+	height: auto;
 }

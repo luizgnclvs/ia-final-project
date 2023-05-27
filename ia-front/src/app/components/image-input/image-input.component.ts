@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { ImageStoreService } from 'src/app/stores/image.store.service';
 
 @Component({
 	selector: 'app-image-input',
@@ -11,6 +11,8 @@ export class ImageInputComponent {
 	displayCondition: boolean = false;
 	file: File | undefined;
 
+	constructor(private imageStore: ImageStoreService) {}
+
 	handleFileInputChange (event: any): void {
 		const file = event.target.files[0];
 
@@ -18,6 +20,8 @@ export class ImageInputComponent {
 			this.file = file;
 			this.displayName = file.name;
 			this.displayCondition = true;
+
+			this.imageStore.receiveImage(file);
 		} else {
 			this.file = undefined;
 			this.displayName = '';
@@ -25,5 +29,11 @@ export class ImageInputComponent {
 		}
 	}
 
-	handleSubmit() {}
+	get imageSRC$(): string {
+		return this.imageStore.imageSRC;
+	}
+
+	handleSubmit(): void {
+		this.imageStore.submitImage();
+	}
 }

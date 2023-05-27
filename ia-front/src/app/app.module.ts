@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuTemplateComponent } from './pages/menu-template/menu-template.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ImageInputComponent } from './components/image-input/image-input.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const AngularMaterial = [
 	MatButtonModule,
@@ -34,12 +35,13 @@ const AngularMaterial = [
 		NavbarComponent,
 		MenuTemplateComponent,
 		AboutComponent,
-		ImageInputComponent
+		ImageInputComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		NoopAnimationsModule,
+		HttpClientModule,
 		AngularMaterial,
 	],
 	providers: [],
