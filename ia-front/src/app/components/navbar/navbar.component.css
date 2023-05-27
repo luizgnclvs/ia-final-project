@@ -1,0 +1,9 @@
+mat-divider {
+	height: 90%;
+	border-color: white;
+	margin: 0 30px;
+}
+
+mat-icon {
+	color: white;
+}

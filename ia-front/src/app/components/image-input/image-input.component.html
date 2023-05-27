@@ -1,0 +1,20 @@
+<mat-card>
+	<mat-card-title>
+		<p>Adicione uma foto da sua roupa!</p>
+	</mat-card-title>
+	<mat-card-content>
+		<mat-form-field>
+			<mat-label>Adicione uma imagem</mat-label>
+			<button mat-icon-button matPrefix (click)="fileInput.click()">
+				<mat-icon fontIcon="attach_file" />
+			</button>
+			<input type="text" readonly matInput [value]="displayName" />
+			<input type="file" accept=".jpg, .jpeg, .png" hidden #fileInput (change)="handleFileInputChange($event)" />
+		</mat-form-field>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-raised-button color="primary" [disabled]="!displayCondition" (click)="handleSubmit()">
+			Enviar
+		</button>
+	</mat-card-actions>	
+</mat-card>
