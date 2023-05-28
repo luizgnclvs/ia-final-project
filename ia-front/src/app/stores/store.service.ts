@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ImageService } from '../services/image.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { RNNResponse } from '../models/rnn-response';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,7 +13,10 @@ export class StoreService {
 
 	private ResponseSubject: BehaviorSubject<RNNResponse>;
 
-	constructor(private imageService: ImageService) {
+	constructor(
+		private imageService: ImageService,
+		private router: Router, //remover após integração
+	) {
 		this.ResponseSubject = new BehaviorSubject<RNNResponse>({} as RNNResponse);
 	}
 
@@ -33,12 +37,14 @@ export class StoreService {
 
 	public submitImage(): void {
 		if (this.image) {
-			this.imageService.postImage(this.image).subscribe({
-				next: response => {
-					this.ResponseSubject.next(response);
-				},
-				error: error => console.error(error),
-			});
+		// 	this.imageService.postImage(this.image).subscribe({
+		// 		next: response => {
+		// 			this.ResponseSubject.next(response);
+		// 		},
+		// 		error: error => console.error(error),
+		// 	});
+			console.log(this.image); //remover após integração
+			this.router.navigate(['/cadastro']); //remover após integração
 		}
 	}
 }

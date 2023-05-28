@@ -1,0 +1,20 @@
+mat-toolbar {
+	width: 500px;
+	display: flex;
+	justify-content: space-evenly;
+	border-radius: 5px;
+}
+
+button {
+	width: 120px;
+}
+
+p {
+	text-align: center;
+	font-weight: 500;
+	margin: 0;
+}
+
+p:last-of-type {
+	margin-bottom: 15px;
+}

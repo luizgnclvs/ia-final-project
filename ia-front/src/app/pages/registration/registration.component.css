@@ -1,0 +1,31 @@
+mat-card {
+	width: min-content;
+	padding: 30px;
+	margin: 45px auto;
+	display: grid;
+	place-items: center;
+}
+
+mat-card-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.image-preview {
+	max-width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+img {
+	width: 50%;
+	height: auto;
+}
+
+mat-card-actions {
+	width: 100%;
+	display: grid;
+	place-items: center;
+}

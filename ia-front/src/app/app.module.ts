@@ -26,6 +26,7 @@ import { PantsFormComponent } from './components/pants-form/pants-form.component
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ShirtsFormComponent } from './components/shirts-form/shirts-form.component';
 import { ShoesFormComponent } from './components/shoes-form/shoes-form.component';
+import { RegistrationNavComponent } from './components/registration-nav/registration-nav.component';
 
 const AngularMaterial = [
 	MatButtonModule,
@@ -51,6 +52,7 @@ const AngularMaterial = [
 		RegistrationComponent,
 		ShirtsFormComponent,
 		ShoesFormComponent,
+  RegistrationNavComponent,
 	],
 	imports: [
 		AppRoutingModule,

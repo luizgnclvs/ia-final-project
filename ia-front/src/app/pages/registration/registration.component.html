@@ -1,3 +1,25 @@
 <mat-card>
-	<app-pants-form />
+	<mat-card-title>
+		<p>{{ title }}</p>
+	</mat-card-title>
+	<mat-card-content>
+		<div *ngIf="hasFile$" class="image-preview">
+			<img [src]="(imageSRC$)" />
+		</div>
+		<app-shirts-form
+			*ngIf="type === 1"
+			(submit)="sendClothingPiece($event)"
+		/>
+		<app-pants-form
+			*ngIf="type === 2"
+			(submit)="sendClothingPiece($event)"
+		/>
+		<app-shoes-form
+			*ngIf="type === 3"
+			(submit)="sendClothingPiece($event)"
+		/>
+	</mat-card-content>
+	<mat-card-actions>
+		<app-registration-nav [type]="type" (change)="handleFormChange($event)" />
+	</mat-card-actions>
 </mat-card>
