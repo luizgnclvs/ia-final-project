@@ -1,1 +1,50 @@
-<p>shoes-form works!</p>
+<form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+	<mat-form-field appearance="outline">
+		<mat-label>Estado de uso</mat-label>
+		<input formControlName="state" matInput />
+	</mat-form-field>
+
+	<div>
+		<mat-form-field appearance="outline">
+			<mat-label>Preço Original</mat-label>
+			<span matTextPrefix>R$&nbsp;</span>
+			<input
+				formControlName="originalPrice"
+				matInput
+				type="number"
+				min="0"
+			/>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Tamanho</mat-label>
+			<input
+				formControlName="size"
+				matInput
+				type="number"
+				min="1"
+			/>
+		</mat-form-field>
+	</div>
+
+	<div>
+		<mat-form-field appearance="outline">
+			<mat-label>Cor</mat-label>
+			<input formControlName="color" matInput />
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Marca</mat-label>
+			<input formControlName="brand" matInput />
+		</mat-form-field>
+	</div>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Modelo de sapato</mat-label>
+		<input formControlName="model" matInput />
+	</mat-form-field>
+
+	<button mat-raised-button color="primary" type="submit">
+		Cadastrar
+	</button>
+</form>

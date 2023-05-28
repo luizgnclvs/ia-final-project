@@ -1,4 +1,4 @@
-export interface Shoe {
+export interface Shoes {
 	size: number;
 	color: string;
 	brand: string;
