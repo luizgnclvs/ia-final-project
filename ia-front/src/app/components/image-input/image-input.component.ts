@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { RNNResponse } from 'src/app/models/rnn-response';
-import { ImageStoreService } from 'src/app/stores/image.store.service';
+import { StoreService } from 'src/app/stores/store.service';
 
 @Component({
 	selector: 'app-image-input',
@@ -14,7 +13,7 @@ export class ImageInputComponent {
 	file: File | undefined;
 	response: RNNResponse | undefined;
 
-	constructor(private imageStore: ImageStoreService) {}
+	constructor(private store: StoreService) {}
 
 	handleFileInputChange (event: any): void {
 		const file = event.target.files[0];
@@ -24,7 +23,7 @@ export class ImageInputComponent {
 			this.displayName = file.name;
 			this.displayCondition = true;
 
-			this.imageStore.receiveImage(file);
+			this.store.receiveImage(file);
 		} else {
 			this.file = undefined;
 			this.displayName = '';
@@ -33,10 +32,10 @@ export class ImageInputComponent {
 	}
 
 	get imageSRC$(): string {
-		return this.imageStore.imageSRC;
+		return this.store.imageSRC;
 	}
 
 	handleSubmit(): void {
-		this.imageStore.submitImage();
+		this.store.submitImage();
 	}
 }

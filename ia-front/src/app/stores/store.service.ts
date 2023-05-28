@@ -6,7 +6,7 @@ import { RNNResponse } from '../models/rnn-response';
 @Injectable({
 	providedIn: 'root'
 })
-export class ImageStoreService {
+export class StoreService {
 	image: File | undefined;
 	imageSRC: any;
 

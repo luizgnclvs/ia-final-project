@@ -1,0 +1,27 @@
+form {
+	width: min-content;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+form > div {
+	display: flex;
+	gap: 30px;
+	justify-content: space-between	;
+	align-items: center;
+	position: relative;
+}
+
+mat-slide-toggle {
+	width: max-content;
+	margin: 0 35px 0 60px;
+	position: relative;
+	bottom: 10px;
+}
+
+.toggle-text {
+	font-size: 1.10rem;
+	font-weight: 500;
+	margin-right: 10px;
+}
