@@ -23,16 +23,16 @@ def preprocess(img_array):
     return preprocess_input(img_expanded)
 
 def get_class_info(prediction):
-    type = int(np.argmax(prediction))
+    class_id = int(np.argmax(prediction))
 
-    if type == 0:
-        name = "Calça"
-    elif type == 1:
-        name = "Camisa"
+    if class_id == 0:
+        class_name = "Calça"
+    elif class_id == 1:
+        class_name = "Camisa"
     else:
-        name = "Sapato"
+        class_name = "Sapato"
     
-    return type, name
+    return class_id, class_name
 
 @app.route('/uploads', methods=['POST'])
 def predict():
@@ -41,8 +41,8 @@ def predict():
     img_array = np.array(img)
     img_processed = preprocess(img_array)
     prediction = model.predict(img_processed)
-    type, name = get_class_info(prediction)
-    response = { 'type': type, 'name': name }
+    class_id, class_name = get_class_info(prediction)
+    response = { 'type': class_id, 'name': class_name }
     return jsonify(response)
 
 if __name__ == '__main__':
