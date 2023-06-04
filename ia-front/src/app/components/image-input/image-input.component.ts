@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RNNResponse } from 'src/app/models/rnn-response';
 import { StoreService } from 'src/app/stores/store.service';
 
 @Component({
@@ -11,7 +10,6 @@ export class ImageInputComponent {
 	displayName: string = '';
 	displayCondition: boolean = false;
 	file: File | undefined;
-	response: RNNResponse | undefined;
 
 	constructor(private store: StoreService) {}
 

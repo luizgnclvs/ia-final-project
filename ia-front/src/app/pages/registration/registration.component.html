@@ -1,25 +1,26 @@
 <mat-card>
 	<mat-card-title>
-		<p>{{ title }}</p>
+		<p *ngIf="response">Cadastro de {{ response.name }}</p>
+		<p *ngIf="!response">Cadastro</p>
 	</mat-card-title>
 	<mat-card-content>
 		<div *ngIf="hasFile$" class="image-preview">
 			<img [src]="(imageSRC$)" />
 		</div>
-		<app-shirts-form
-			*ngIf="type === 1"
+		<app-pants-form
+			*ngIf="response?.type === 0"
 			(submit)="sendClothingPiece($event)"
 		/>
-		<app-pants-form
-			*ngIf="type === 2"
+		<app-shirts-form
+			*ngIf="response?.type === 1"
 			(submit)="sendClothingPiece($event)"
 		/>
 		<app-shoes-form
-			*ngIf="type === 3"
+			*ngIf="response?.type === 2"
 			(submit)="sendClothingPiece($event)"
 		/>
 	</mat-card-content>
 	<mat-card-actions>
-		<app-registration-nav [type]="type" (change)="handleFormChange($event)" />
+		<app-registration-nav [type]="response?.type ?? -1" (change)="handleFormChange($event)" />
 	</mat-card-actions>
 </mat-card>

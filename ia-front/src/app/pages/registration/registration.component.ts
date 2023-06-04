@@ -6,6 +6,7 @@ import { StoreService } from 'src/app/stores/store.service';
 import { Pants } from 'src/app/models/pants';
 import { Shirt } from 'src/app/models/shirt';
 import { Shoes } from 'src/app/models/shoes';
+import { RNNResponse } from 'src/app/models/rnn-response';
 
 @Component({
 	selector: 'app-registration',
@@ -14,19 +15,15 @@ import { Shoes } from 'src/app/models/shoes';
 })
 export class RegistrationComponent implements OnInit {
 	subscription: Subscription = new Subscription();
-	title: string = '';
-	type: number = 1;
+	response: RNNResponse | undefined;
 
-	constructor(private store: StoreService) {
-		this.setFormTitle() //remover após integração
-	}
+	constructor(private store: StoreService) {}
 
 	ngOnInit(): void {
-		// this.subscription = this.store.ResponseSubject$.subscribe(
-		// 	response => {
-		// 		this.type = response.type;
-		// 		this.setFormTitle();
-		// });
+		this.subscription = this.store.ResponseSubject$.subscribe(
+			response => {
+				this.response = response;
+		});
 	}
 
 	get hasFile$(): boolean {
@@ -38,18 +35,12 @@ export class RegistrationComponent implements OnInit {
 		return this.store.imageSRC;
 	}
 
-	setFormTitle(): void {
-		if (this.type === 1) this.title = 'Cadastrar Camiseta';
-		else if (this.type === 2) this.title = 'Cadastrar Calça'
-		else this.title = 'Cadastrar Sapato'
-	}
-
 	sendClothingPiece(clothig: Shirt | Pants | Shoes): void {
 		console.log(clothig);
 	}
 
 	handleFormChange(type: number): void {
-		this.type = type;
-		this.setFormTitle();
+		if (this.response && (type === 0 || type === 1 || type === 2))
+		this.response.type = type;
 	}
 }

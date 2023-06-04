@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 	styleUrls: ['./registration-nav.component.css']
 })
 export class RegistrationNavComponent {
-	@Input() type: number = 0;
+	@Input() type!: number;
 	@Output() change = new EventEmitter<number>();
 
 	handleClick(type: number): void {

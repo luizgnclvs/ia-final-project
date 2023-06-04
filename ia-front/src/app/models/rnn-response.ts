@@ -1,3 +1,4 @@
 export interface RNNResponse {
-	type: 1 | 2 | 3;
+	type: 0 | 1 | 2;
+	name: string;
 }

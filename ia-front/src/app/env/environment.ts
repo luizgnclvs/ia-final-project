@@ -1,5 +1,5 @@
 const environment = {
-	api: 'http://localhost:8080/',
+	api: 'http://localhost:5000/uploads',
 };
 
 export default environment;
