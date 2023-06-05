@@ -4,7 +4,6 @@ from PIL import Image
 import os
 import numpy as np
 from tensorflow.keras.models import load_model
-from tensorflow.keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.preprocessing import image
 
 app = Flask(__name__)
