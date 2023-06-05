@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	triggerResponseNavigation(): void {
 		const type = this.response?.type;
 
-		if (type) this.router.navigate(['/cadastro']);
+		if (type === 0 || type === 1 || type === 2)
+		this.router.navigate(['/cadastro']);
 	}
 }

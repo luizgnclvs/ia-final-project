@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ImageService } from '../services/image.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { RNNResponse } from '../models/rnn-response';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class StoreService {
+	subscription: Subscription = new Subscription();
 	image: File | undefined;
 	imageSRC: any;
 
@@ -34,12 +35,21 @@ export class StoreService {
 
 	public submitImage(): void {
 		if (this.image) {
-			this.imageService.postImage(this.image).subscribe({
+			let formData = new FormData();
+			formData.append('file', this.image);
+
+			this.subscription = this.imageService.postImage(formData).subscribe({
 				next: response => {
 					this.ResponseSubject.next(response);
+					console.log(response);
 				},
 				error: error => console.error(error),
 			});
 		}
+	}
+
+	public resetResponse(): void {
+		this.subscription.unsubscribe();
+		this.ResponseSubject = new BehaviorSubject<RNNResponse>({} as RNNResponse);
 	}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { StoreService } from 'src/app/stores/store.service';
@@ -13,9 +13,11 @@ import { RNNResponse } from 'src/app/models/rnn-response';
 	templateUrl: './registration.component.html',
 	styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
 	subscription: Subscription = new Subscription();
 	response: RNNResponse | undefined;
+	type: number = -1;
+	title: string = '';
 
 	constructor(private store: StoreService) {}
 
@@ -23,7 +25,13 @@ export class RegistrationComponent implements OnInit {
 		this.subscription = this.store.ResponseSubject$.subscribe(
 			response => {
 				this.response = response;
+				this.triggerFormChange();
+				this.setFormTitle(response.name);
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.subscription.unsubscribe();
 	}
 
 	get hasFile$(): boolean {
@@ -35,12 +43,30 @@ export class RegistrationComponent implements OnInit {
 		return this.store.imageSRC;
 	}
 
+	triggerFormChange(): void {
+		if (this.response) {
+			this.type = this.response.type;
+		}
+	}
+
+	setFormTitle(input: string) {
+		if (input) this.title = `Cadastro de ${input}`;
+		else this.changeFormTitle();
+	}
+
+	changeFormTitle(): void {
+		if (this.type === 0) this.setFormTitle('Calça');
+		else if (this.type === 1) this.setFormTitle('Camisa');
+		else this.setFormTitle('Sapato');
+	}
+
 	sendClothingPiece(clothig: Shirt | Pants | Shoes): void {
 		console.log(clothig);
+		this.store.resetResponse();
 	}
 
 	handleFormChange(type: number): void {
-		if (this.response && (type === 0 || type === 1 || type === 2))
-		this.response.type = type;
+		this.type = type;
+		this.changeFormTitle();
 	}
 }

@@ -10,7 +10,7 @@ import { RNNResponse } from '../models/rnn-response';
 export class ImageService {
 	constructor(private http: HttpClient) {}
 
-	public postImage(body: File): Observable<RNNResponse> {
+	public postImage(body: FormData): Observable<RNNResponse> {
 		return this.http.post<RNNResponse>(environment.api, body);
 	}
 }
