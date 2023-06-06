@@ -12,7 +12,7 @@ Projeto final da cadeira de Inteligência Artificial Aplicada ofertada pela UNIC
 - É necessário instalar a plataforma *Anaconda* e/ou o gerenciador de pacotes *Conda*.
 - Também é preciso instalar o *Python* na versão **3.10** ou acima.
 
-### Ambiente e Bilbiotecas
+### Ambiente e Blibiotecas
 
 - Após os passos anteriores, é necessário fazer o setup do ambiente:
 
