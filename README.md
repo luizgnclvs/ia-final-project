@@ -5,7 +5,7 @@ Projeto final da cadeira de Inteligência Artificial Aplicada ofertada pela UNIC
 - [MODEL](https://drive.google.com/uc?id=1drL1BjRoHoiZ9TlusGTDRa3fM9rtOrrX)
 - [DATASET](https://drive.google.com/uc?id=1x2HiCB8oU5AgYuMEPwicGQ7r9m20uI-U)
 
-## Instalação
+## Back-End
 
 ### Programas e Aplicativos
 
@@ -31,3 +31,20 @@ conda activate myenv
 ```
 conda install flask tensorflow==2.12 numpy keras flask-cors
 ```
+
+## Front-End
+
+- No diretório do front, instale as dependências do projeto:
+
+```
+cd ia-front/
+npm install
+```
+
+- E execute a aplicação:
+
+```
+npm start
+```
+
+- Após a inicialização, a aplicação já deve abrir uma nova guia no seu navegador, mas, caso não aconteça, basta apenas entrar na porta [4200](http://localhost:4200).
